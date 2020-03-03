@@ -97,8 +97,12 @@ case $name in
     ;;
 	# iOS -- this us run though apples
 	# xcrun tool.
-	aarch64-apple-ios-clang|aarch64-apple-ios-ld)
+	aarch64-apple-ios-ld)
 		flags="--sdk iphoneos ${cmd} -arch arm64"
+		cmd="xcrun"
+		;;
+	aarch64-apple-ios-clang)
+		flags="--sdk iphoneos ${cmd} -arch arm64 --target=aarch64-apple-ios"
 		cmd="xcrun"
 		;;
 	aarch64-apple-ios-*|aarch64-apple-ios-*)
@@ -106,7 +110,11 @@ case $name in
 		cmd="xcrun"
 		;;
 	# iOS (64bit simulator)
-	x86_64-apple-ios-clang|x86_64-apple-ios-ld)
+	x86_64-apple-ios-clang)
+		flags="--sdk iphonesimulator ${cmd} -arch x86_64 --target=x86_64-apple-ios -miphoneos-version-min=10.0"
+		cmd="xcrun"
+		;;
+	x86_64-apple-ios-ld)
 		flags="--sdk iphonesimulator ${cmd} -arch x86_64"
 		cmd="xcrun"
 		;;
