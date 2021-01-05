@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation {
     name = "toolchain-wrapper";
-    src = toolchain-wrapper-src;
+    src = ./.;
 
     buildPhase = ''
       ./bootstrap
@@ -12,4 +12,4 @@ stdenv.mkDerivation {
       mkdir -p $out/bin
       cp -r . $out/bin
     '';
-};
+}

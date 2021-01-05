@@ -1,3 +1,1 @@
-{ pkgs ? import <nixpkgs> {} }:
-
-pkgs.callPackage (import ./toolchain-wrapper)
+{ pkgs ? import <nixpkgs> {} }: pkgs.callPackage ./toolchain-wrapper.nix { }
